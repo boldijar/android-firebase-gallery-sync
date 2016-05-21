@@ -25,7 +25,7 @@ public class ImageLoadActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (null == data.getData()) {
+        if (data == null || null == data.getData()) {
             return;
         }
         final Uri uri = data.getData();
