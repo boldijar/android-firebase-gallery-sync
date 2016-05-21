@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gallery.sync.MainActivity">
+    tools:context="com.gallery.sync.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,12 +13,11 @@
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/login_auth_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/login_email"
+                android:id="@+id/register_email"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -32,12 +31,11 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/login_auth_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/register_password"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -50,8 +48,24 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/register_retype_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint="@string/retype_password"
+                android:inputType="textPassword"
+                />
+        </android.support.design.widget.TextInputLayout>
+
         <TextView
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -59,28 +73,10 @@
             android:background="@drawable/primary_color_selector"
             android:clickable="true"
             android:gravity="center"
-            android:text="@string/login_button"
+            android:text="@string/register_button"
             android:textAllCaps="true"
             android:textColor="#ffffff"
             android:textSize="20sp"
             />
-
-        <TextView
-            android:id="@+id/login_register_button"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="15dp"
-            android:clickable="true"
-            android:gravity="right"
-            android:text="@string/register"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            />
-
-
     </LinearLayout>
-
-
 </FrameLayout>
