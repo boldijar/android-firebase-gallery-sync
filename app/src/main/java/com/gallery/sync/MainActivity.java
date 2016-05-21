@@ -1,5 +1,6 @@
 package com.gallery.sync;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase("https://glowing-fire-5858.firebaseio.com/");
+        myFirebaseRef=FireBase.getFirebase();
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +48,11 @@ public class MainActivity extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goRegister();
+                Intent intent = new Intent(getBaseContext(),RegisterActivity.class);
+                startActivity(intent);
             }
 
-            private void goRegister() {
-                
-            }
+
         });
     }
 
@@ -68,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     Toast.makeText(getBaseContext(),"Login succesful!",Toast.LENGTH_SHORT).show();
+                    Intent intent= new Intent(getBaseContext(), GalleryActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
-                    Toast.makeText(getBaseContext(),"Error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),firebaseError.toString(),Toast.LENGTH_SHORT).show();
                 }
             });
         }
