@@ -52,4 +52,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
         mImages.remove(position);
         notifyItemRemoved(position);
     }
+
+    public Image getImage(int position) {
+        return mImages.get(position);
+    }
 }

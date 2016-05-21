@@ -23,7 +23,6 @@
         <activity
             android:name=".GalleryActivity"
             android:theme="@style/AppThemeNoActionBar">
-
         </activity>
 
         <meta-data
@@ -39,6 +38,10 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.gallery.sync"/>
 
+        <activity
+            android:name=".ImageActivity"
+            android:theme="@style/AppThemeNoActionBar">
+        </activity>
     </application>
 
 </manifest>
