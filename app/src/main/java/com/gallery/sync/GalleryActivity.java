@@ -1,5 +1,6 @@
 package com.gallery.sync;
 
+import android.app.ActivityOptions;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.gallery.sync.adapter.ImageAdapter;
+import com.gallery.sync.models.Image;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -53,6 +55,20 @@ public class GalleryActivity extends ImageLoadActivity {
                 popupMenu.inflate(R.menu.image_options);
                 popupMenu.show();
                 return true;
+            }
+        });
+        itemClickSupport.setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Image image = mAdapter.getImage(position);
+                ActivityOptions options = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    options = ActivityOptions
+                            .makeSceneTransitionAnimation(GalleryActivity.this, v, "share");
+                    startActivity(ImageActivity.createIntent(GalleryActivity.this, image.url), options.toBundle());
+                } else {
+                    startActivity(ImageActivity.createIntent(GalleryActivity.this, image.url));
+                }
             }
         });
     }

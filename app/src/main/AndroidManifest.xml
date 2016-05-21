@@ -40,6 +40,10 @@
 
         <activity android:name=".RegisterActivity">
         </activity>
+        <activity
+            android:name=".ImageActivity"
+            android:theme="@style/AppThemeNoActionBar">
+        </activity>
     </application>
 
 </manifest>
