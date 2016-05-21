@@ -4,10 +4,18 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.akiniyalocts.imgur_api.ImgurClient;
+import com.akiniyalocts.imgur_api.model.ImgurResponse;
 import com.bumptech.glide.Glide;
 import com.gallery.sync.models.Image;
 
+import java.io.File;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by Paul on 5/21/2016.
@@ -44,6 +52,30 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
         image.save();
         mImages.add(image);
         notifyItemInserted(mImages.size() - 1);
+        final int position = mImages.size() - 1;
+
+        ImgurClient.getInstance()
+                .uploadImage(
+                        new TypedFile("image/*", new File(path)),
+                        "My Image Title",
+                        "My Image Description",
+                        new Callback<ImgurResponse<com.akiniyalocts.imgur_api.model.Image>>() {
+                            @Override
+                            public void success(ImgurResponse<com.akiniyalocts.imgur_api.model.Image> imageImgurResponse, Response response) {
+                                syncImage(imageImgurResponse.data.getLink(), position);
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                //Notify user of failure
+                            }
+                        }
+                );
+
+    }
+
+    private void syncImage(String link, int position) {
+
     }
 
     public void delete(int position) {
