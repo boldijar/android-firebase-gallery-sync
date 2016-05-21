@@ -22,8 +22,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:drawablePadding="15dp"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:drawablePadding="15dp"
                 android:hint="@string/login_email"
                 android:inputType="textEmailAddress"
                 />
@@ -64,6 +64,21 @@
             android:textColor="#ffffff"
             android:textSize="20sp"
             />
+
+        <TextView
+            android:id="@+id/login_register_button"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:clickable="true"
+            android:gravity="right"
+            android:text="@string/register"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            />
+
 
     </LinearLayout>
 

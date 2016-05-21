@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.gallery.sync"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.gallery.sync">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name="com.orm.SugarApp"
@@ -16,15 +18,26 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GalleryActivity"
+        <activity
+            android:name=".GalleryActivity"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
 
-        <meta-data android:name="DATABASE" android:value="example.db" />
-        <meta-data android:name="VERSION" android:value="1" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="exampleapp.db"/>
+        <meta-data
+            android:name="VERSION"
+            android:value="1"/>
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true"/>
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.gallery.sync"/>
 
+        <activity android:name=".RegisterActivity">
+        </activity>
     </application>
 
 </manifest>
