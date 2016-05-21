@@ -23,13 +23,47 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:drawablePadding="15dp"
-                android:hint="@string/email"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:hint="@string/login_email"
                 android:inputType="textEmailAddress"
-                android:text="Your email"/>
+                />
 
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_auth_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint="@string/login_password"
+                android:inputType="textPassword"
+                />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/login_button"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:background="@drawable/primary_color_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/login_button"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            />
 
     </LinearLayout>
 
