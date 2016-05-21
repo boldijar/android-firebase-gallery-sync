@@ -78,6 +78,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
 
     }
 
+    private void imageSynced(String link, int position) {
+        Image image = mImages.get(position);
+        image.local = false;
+        image.url = link;
+        image.save();
+        notifyItemChanged(position);
+    }
+
     public void delete(int position) {
         Image image = mImages.get(position);
         image.delete();

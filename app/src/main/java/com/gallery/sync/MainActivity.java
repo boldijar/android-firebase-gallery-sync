@@ -1,8 +1,8 @@
 package com.gallery.sync;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,8 +11,7 @@ import android.widget.Toast;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-
-import org.w3c.dom.Text;
+import com.gallery.sync.models.Image;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         Firebase.setAndroidContext(this);
-        myFirebaseRef=FireBase.getFirebase();
+        myFirebaseRef = FireBase.getFirebase();
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),RegisterActivity.class);
+                Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
                 startActivity(intent);
             }
 
@@ -68,14 +67,15 @@ public class MainActivity extends AppCompatActivity {
             myFirebaseRef.authWithPassword(username, password, new Firebase.AuthResultHandler() {
                 @Override
                 public void onAuthenticated(AuthData authData) {
-                    Toast.makeText(getBaseContext(),"Login succesful!",Toast.LENGTH_SHORT).show();
-                    Intent intent= new Intent(getBaseContext(), GalleryActivity.class);
+                    Toast.makeText(getBaseContext(), "Login succesful!", Toast.LENGTH_SHORT).show();
+                    Image.deleteAll(Image.class);
+                    Intent intent = new Intent(getBaseContext(), GalleryActivity.class);
                     startActivity(intent);
                 }
 
                 @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
-                    Toast.makeText(getBaseContext(),firebaseError.toString(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), firebaseError.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
