@@ -3,7 +3,7 @@ package com.gallery.sync.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.gallery.sync.models.ImageModel;
+import com.gallery.sync.models.Image;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import java.util.List;
  */
 public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
 
-    private List<ImageModel> mImages;
+    private List<Image> mImages;
 
     public ImageAdapter() {
-        mImages = ImageModel.listAll(ImageModel.class);
+        mImages = Image.listAll(Image.class);
         for (int i = 0; i <= 100; i++)
-            mImages.add(new ImageModel());
+            mImages.add(new Image());
     }
 
     @Override
@@ -33,5 +33,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
     @Override
     public int getItemCount() {
         return mImages.size();
+    }
+
+    public void add(String path) {
+        Image image = new Image(path, true);
+        image.save();
+        mImages.add(image);
+        notifyItemInserted(mImages.size() - 1);
     }
 }

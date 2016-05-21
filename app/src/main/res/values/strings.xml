@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Firebase Gallery Sync</string>
+    <string name="select_profile_picture">Please select picture</string>
+    <string name="error_picture">Error getting picture</string>
 </resources>
